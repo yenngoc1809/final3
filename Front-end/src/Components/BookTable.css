@@ -1,0 +1,94 @@
+/* Main container for the book grid */
+.book-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: left;
+    margin-top: 50px;
+    /* Space between the header and the first row */
+}
+
+.page-container {
+    margin-top: 50px;
+    /* Thêm khoảng cách giữa header và nội dung */
+}
+
+/* Each book item container */
+.book-item {
+    flex: 1 0 calc(20% - 16px);
+    /* Four items per row */
+    max-width: calc(20% - 16px);
+    /* Four items per row */
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    padding: 16px;
+    border-radius: 8px;
+    background-color: #fff;
+    transition: transform 0.2s;
+    margin: 8px;
+}
+
+/* Hover effect for book items */
+.book-item:hover {
+    transform: scale(1.05);
+}
+
+/* Available book styling */
+.book-item.available {
+    border-color: #28a745;
+    /* Green border for available books */
+}
+
+/* Unavailable book styling */
+.book-item.unavailable {
+    border-color: #dc3545;
+    /* Red border for unavailable books */
+}
+
+/* Book cover image styling */
+.book-cover {
+    width: 100%;
+    height: auto;
+    max-height: 250px;
+    /* Adjust the height to make the images rectangular */
+    aspect-ratio: 2/3;
+    /* Aspect ratio for a typical book cover */
+    display: block;
+    margin: 0 auto 16px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* Book info container styling */
+.book-info {
+    text-align: center;
+}
+
+/* Book name heading styling */
+.book-info h5 {
+    font-size: 1.2em;
+    margin: 0 0 8px;
+}
+
+/* Book info paragraph styling */
+.book-info p {
+    margin: 4px 0;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    .book-item {
+        flex: 1 0 calc(50% - 16px);
+        /* Two items per row on smaller screens */
+        max-width: calc(50% - 16px);
+    }
+}
+
+/* Responsive design for very small screens */
+@media (max-width: 480px) {
+    .book-item {
+        flex: 1 0 100%;
+        /* One item per row on very small screens */
+        max-width: 100%;
+    }
+}

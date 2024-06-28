@@ -1,0 +1,66 @@
+.recommendedbooks-container {
+    background-color: rgb(247, 235, 215);
+    /* Background color as the original */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.recommendedbooks {
+    padding: 20px;
+    overflow: hidden;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+    height: auto;
+}
+
+.recommendedbooks-title {
+    position: relative;
+    color: #0E2431;
+    font-size: 32px;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+.images {
+    display: flex;
+    align-items: center;
+    animation: marquee 15s linear infinite;
+    /* Adjust the speed here */
+}
+
+.recommended-book {
+    display: block;
+    width: 150px;
+    height: 225px;
+    /* Fixed height to ensure all images are the same size */
+    object-fit: cover;
+    /* Ensure images cover the set dimensions without distortion */
+    margin: 0 1vw;
+    border-radius: 5px;
+    transition: transform ease 0.7s;
+    /* Smooth transition for scaling */
+}
+
+.recommendedbooks:hover .images,
+.recommended-book:hover {
+    transform: scale(1.15);
+    /* Scale images on hover */
+    animation-play-state: paused;
+    /* Pause marquee animation on hover */
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0%);
+    }
+
+    100% {
+        transform: translateX(-50%);
+        /* Move to the left by 50% of the container width */
+    }
+}

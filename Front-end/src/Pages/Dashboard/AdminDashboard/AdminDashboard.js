@@ -1,12 +1,14 @@
+// AdminDashboard.js
+
 import React, { useState } from 'react';
 import "./AdminDashboard.css";
 import AddTransaction from './Components/AddTransaction';
-//import AddMember from './Components/AddMember';
 import AddBook from './Components/AddBook';
 import GetMember from './Components/GetMember';
 import Return from './Components/Return';
-import UserProfile from './Components/UserProfile';  // Import UserProfile
+import UserProfile from './Components/UserProfile';
 import AddCategory from './Components/AddCategory';
+import RequestList from './Components/RequestList'; // Import RequestList
 
 import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
@@ -53,7 +55,6 @@ function AdminDashboard() {
                     <p className={`dashboard-option ${active === "addbook" ? "clicked" : ""}`} onClick={() => { setActive("addbook"); setSidebar(false); }}><BookIcon className='dashboard-option-icon' /> Add Book</p>
                     <p className={`dashboard-option ${active === "addtransaction" ? "clicked" : ""}`} onClick={() => { setActive("addtransaction"); setSidebar(false); }}><ReceiptIcon className='dashboard-option-icon' /> Add Transaction </p>
                     <p className={`dashboard-option ${active === "getmember" ? "clicked" : ""}`} onClick={() => { setActive("getmember"); setSidebar(false); }}><AccountBoxIcon className='dashboard-option-icon' /> Get Member </p>
-                    {/* <p className={`dashboard-option ${active === "addmember" ? "clicked" : ""}`} onClick={() => { setActive("addmember"); setSidebar(false); }}><PersonAddIcon className='dashboard-option-icon' /> Add Member </p> */}
                     <p className={`dashboard-option ${active === "returntransaction" ? "clicked" : ""}`} onClick={() => { setActive("returntransaction"); setSidebar(false); }}><AssignmentReturnIcon className='dashboard-option-icon' /> Return </p>
                     <p className={`dashboard-option ${active === "addcategory" ? "clicked" : ""}`} onClick={() => { setActive("addcategory"); setSidebar(false); }}><CategoryIcon className='dashboard-option-icon' /> Add Category</p>
                     <p className={`dashboard-option`} onClick={logout}><PowerSettingsNewIcon className='dashboard-option-icon' /> Log out </p>
@@ -69,9 +70,6 @@ function AdminDashboard() {
                     <div className="dashboard-transactions-content" style={active !== "addtransaction" ? { display: 'none' } : {}}>
                         <AddTransaction />
                     </div>
-                    {/* <div className="dashboard-addmember-content" style={active !== "addmember" ? { display: 'none' } : {}}>
-                        <AddMember />
-                    </div> */}
                     <div className="dashboard-getmember-content" style={active !== "getmember" ? { display: 'none' } : {}}>
                         <GetMember />
                     </div>
@@ -80,6 +78,9 @@ function AdminDashboard() {
                     </div>
                     <div className="dashboard-addcategory-content" style={active !== "addcategory" ? { display: 'none' } : {}}>
                         <AddCategory />
+                    </div>
+                    <div className="dashboard-requestlist-content" style={active !== "requestlist" ? { display: 'none' } : {}}>
+                        <RequestList />
                     </div>
                 </div>
             </div>

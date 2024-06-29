@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import { Dropdown } from 'semantic-ui-react';
 import moment from 'moment';
-import { AuthContext } from '../../../../Context/AuthContext';
+import { AuthContext } from "../../../../Context/AuthContext";
 import '../AdminDashboard.css';
 import '../../MemberDashboard/MemberDashboard.css';
 
@@ -11,10 +11,11 @@ function Return() {
     const { user } = useContext(AuthContext);
 
     const [allTransactions, setAllTransactions] = useState([]);
-    const [executionStatus, setExecutionStatus] = useState(null); // For triggering the table data to be updated
-
+    const [executionStatus, setExecutionStatus] = useState(null);
     const [allMembersOptions, setAllMembersOptions] = useState([]);
     const [borrowerId, setBorrowerId] = useState(null);
+    const [requests, setRequests] = useState([]);
+    const [error, setError] = useState(null);
 
     // Fetching all Members
     useEffect(() => {
@@ -49,6 +50,19 @@ function Return() {
         };
         getAllTransactions();
     }, [API_URL, executionStatus]);
+
+    // Fetching all requests
+    useEffect(() => {
+        const fetchRequests = async () => {
+            try {
+                const response = await axios.get(`${API_URL}api/books/requests`);
+                setRequests(response.data);
+            } catch (err) {
+                setError(`Error fetching requests: ${err.response?.data?.message || err.message}`);
+            }
+        };
+        fetchRequests();
+    }, [API_URL]);
 
     const returnBook = async (transactionId, borrowerId, bookId, due) => {
         try {
@@ -103,6 +117,29 @@ function Return() {
         }
     };
 
+    const handleAcceptRequest = async (requestId) => {
+        try {
+            const response = await axios.post(`${API_URL}api/books/request/accept/${requestId}`, { isAdmin: true });
+            alert(response.data.message);
+            setRequests(requests.filter(request => request._id !== requestId));
+            setExecutionStatus('Completed');
+        } catch (err) {
+            console.error('Error accepting request:', err);
+            setError(`Error accepting request: ${err.response?.data?.message || err.message}`);
+        }
+    };
+
+    const handleDeleteRequest = async (requestId) => {
+        try {
+            const response = await axios.delete(`${API_URL}api/books/request/cancel/${requestId}`, { data: { isAdmin: true } });
+            alert(response.data.message);
+            setRequests(requests.filter(request => request._id !== requestId));
+        } catch (err) {
+            console.error('Error deleting request:', err);
+            setError(`Error deleting request: ${err.response?.data?.message || err.message}`);
+        }
+    };
+
     return (
         <div>
             <div className="semanticdropdown returnbook-dropdown">
@@ -116,6 +153,25 @@ function Return() {
                     onChange={(event, data) => setBorrowerId(data.value)}
                 />
             </div>
+
+            {/* Requests Section */}
+            <p className="dashboard-option-title">Requests</p>
+            <div className="request-list">
+                {requests.map(request => (
+                    <div className="request-item" key={request._id}>
+                        <span>{request.book.bookName} - {request.userId.userFullName} - {request.status}</span>
+                        <button
+                            onClick={() => handleAcceptRequest(request._id)}
+                            disabled={request.book.bookCountAvailable <= 0}
+                        >
+                            Accept
+                        </button>
+                        <button onClick={() => handleDeleteRequest(request._id)}>Delete</button>
+                        {request.book.bookCountAvailable <= 0 && <span className="not-available">Not available now</span>}
+                    </div>
+                ))}
+            </div>
+
             <p className="dashboard-option-title">Issued</p>
             <table className="admindashboard-table">
                 <thead>

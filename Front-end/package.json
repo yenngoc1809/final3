@@ -25,7 +25,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -46,6 +48,8 @@
     ]
   },
   "devDependencies": {
-    "webpack-dev-server": "^5.0.4"
-  }
+    "webpack-dev-server": "^5.0.4",
+    "gh-pages": "^3.2.3"
+  },
+  "homepage": "https://yenngoc1809.github.io/reacttest"
 }

@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import "../AdminDashboard/AdminDashboard.css";
 import "./MemberDashboard.css";
 import UserProfile from "../AdminDashboard/Components/UserProfile";
+import UserRequests from "../AdminDashboard/Components/UserRequests"; // Import UserRequests component
 
 import LibraryBooksIcon from "@material-ui/icons/LibraryBooks";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
@@ -99,6 +100,16 @@ function MemberDashboard() {
             <HistoryIcon className="dashboard-option-icon" /> History
           </a>
           <a
+            href="#requests@member"
+            className={`dashboard-option ${active === "requests" ? "clicked" : ""}`}
+            onClick={() => {
+              setActive("requests");
+              setSidebar(false);
+            }}
+          >
+            <LibraryBooksIcon className="dashboard-option-icon" /> Requests
+          </a>
+          <a
             href="#profile@member"
             className={`dashboard-option ${active === "logout" ? "clicked" : ""}`}
             onClick={() => {
@@ -180,6 +191,8 @@ function MemberDashboard() {
             </div>
           )}
 
+          {active === "requests" && <UserRequests />} {/* Render UserRequests component */}
+
           {active === "history" && (
             <div className="member-history-content" id="history@member">
               <p className="member-dashboard-heading">History</p>
@@ -188,21 +201,23 @@ function MemberDashboard() {
                   <tr>
                     <th>S.No</th>
                     <th>Book-Name</th>
-                    <th>From</th>
-                    <th>To</th>
-                    <th>Return Date</th>
+                    <th>From Date</th>
+                    <th>To Date</th>
+                    <th>Fine</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {memberDetails?.prevTransactions?.map((data, index) => (
-                    <tr key={index}>
-                      <td>{index + 1}</td>
-                      <td>{data.bookName}</td>
-                      <td>{moment(data.fromDate).format("DD/MM/YYYY")}</td>
-                      <td>{moment(data.toDate).format("DD/MM/YYYY")}</td>
-                      <td>{moment(data.returnDate).format("DD/MM/YYYY")}</td>
-                    </tr>
-                  ))}
+                  {memberDetails?.activeTransactions
+                    ?.filter((data) => data.transactionType === "Returned")
+                    .map((data, index) => (
+                      <tr key={index}>
+                        <td>{index + 1}</td>
+                        <td>{data.bookName}</td>
+                        <td>{moment(data.fromDate).format("DD/MM/YYYY")}</td>
+                        <td>{moment(data.toDate).format("DD/MM/YYYY")}</td>
+                        <td>{data.fine}</td>
+                      </tr>
+                    ))}
                 </tbody>
               </table>
             </div>

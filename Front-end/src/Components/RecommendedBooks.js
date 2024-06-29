@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom'; // Import Link
 import './RecommendedBooks.css';
 
 const API_URL = process.env.REACT_APP_API_URL || "http://localhost:3000";
@@ -32,7 +33,9 @@ function RecommendedBooks() {
       <div className='recommendedbooks'>
         <div className='images'>
           {repeatedBooks.map((book, index) => (
-            <img key={index} className='recommended-book' src={book.coverImage} alt={book.bookName} />
+            <Link key={index} to={`/book/${book._id}`}> {/* Thêm Link xung quanh thẻ img */}
+              <img className='recommended-book' src={book.coverImage} alt={book.bookName} />
+            </Link>
           ))}
         </div>
       </div>

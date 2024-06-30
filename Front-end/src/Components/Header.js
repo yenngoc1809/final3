@@ -64,7 +64,7 @@ function Header() {
                         />
                     </>
                 )}
-                <ul className={menutoggle ? "nav-options active" : "nav-options"}>
+                <ul className={menutoggle ? "nav-options-active" : "nav-options"}>
                     <li className="option" onClick={closeMenu}>
                         <Link to='/'>Home</Link>
                     </li>

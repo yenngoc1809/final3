@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
     "version": 2,
     "builds": [
         {
@@ -13,3 +14,27 @@
         }
     ]
 }
+=======
+  "version": 2,
+  "builds": [
+    {
+      "src": "bin/www",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/",
+      "methods": [
+                "GET",
+                "POST",
+                "PUT",
+                "PATCH",
+                "DELETE",
+                "OPTIONS"
+            ]
+    }
+  ]
+}
+>>>>>>> 324d358b39df771d048f7641e1921ce50cd50f46

@@ -127,26 +127,18 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var dotenv = require('dotenv');
-const expHbs = require('express3-handlebars');
 var bodyParser = require('body-parser');
-const mongoose = require('mongoose');
+var mongoose = require('mongoose');
 var cors = require('cors');
-const redis = require('redis');
 
-/* Routes */
-var userRoutes = require('./routes/users');
-const transactionRoutes = require('./routes/transactions');
-const categoriesRouter = require('./routes/categories');
-const bookRoutes = require('./routes/books');
-const authRoutes = require('./routes/authentication');
-const reviewRoutes = require('./routes/review');
-
-/* App Config */
+// Load environment variables
 dotenv.config();
+
+// Create Express app
 var app = express();
 const port = process.env.PORT || 3000;
 
-/* Middlewares */
+// Middleware setup
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cors());
@@ -154,11 +146,10 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(logger('dev'));
 
-/* MongoDB connection */
-/* MongoDB connection */
+// MongoDB connection
 const mongoURI = process.env.MONGO_URL || 'mongodb+srv://min:min123456@cluster0.s4hmutd.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
 
-mongoose.connect(mongoURI)
+mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('Connected to MongoDB'))
   .catch((err) => console.error('Failed to connect to MongoDB', err));
 
@@ -168,7 +159,14 @@ db.once('open', () => {
   console.log('Connected to MongoDB');
 });
 
-/* API Routes */
+// Routes
+var userRoutes = require('./routes/users');
+const transactionRoutes = require('./routes/transactions');
+const categoriesRouter = require('./routes/categories');
+const bookRoutes = require('./routes/books');
+const authRoutes = require('./routes/authentication');
+const reviewRoutes = require('./routes/review');
+
 app.use('/api/authentication', authRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/books', bookRoutes);
@@ -176,18 +174,18 @@ app.use('/api/transactions', transactionRoutes);
 app.use('/api/categories', categoriesRouter);
 app.use('/api/review', reviewRoutes);
 
-/* Parse application/x-www-form-urlencoded */
+// Parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
 
-/* Parse application/json */
+// Parse application/json
 app.use(bodyParser.json());
 
-/* Catch 404 and forward to error handler */
+// Catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
 });
 
-/* Error handler */
+// Error handler
 app.use(function (err, req, res, next) {
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
@@ -196,10 +194,11 @@ app.use(function (err, req, res, next) {
   res.json({ error: res.locals.message });
 });
 
-/* Start the server */
+// Start the server
 const server = app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+  console.log(Server is running on port ${port});
 });
+
 // Set timeout to 2 minutes
 server.setTimeout(4 * 60 * 1000);
 

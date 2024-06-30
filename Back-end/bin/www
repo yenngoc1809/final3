@@ -4,7 +4,11 @@
  * Module dependencies.
  */
 
+<<<<<<< HEAD
 var app = require('../server');
+=======
+var app = require('../server.js');
+>>>>>>> 324d358b39df771d048f7641e1921ce50cd50f46
 var debug = require('debug')('library-management-system:server');
 var http = require('http');
 

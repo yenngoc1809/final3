@@ -1,0 +1,45 @@
+/* LibraryReviews.css */
+.reviews-section {
+    width: 80%;
+    margin: 20px auto;
+    /* Thêm margin-top để cách lề trên */
+}
+
+.review-item {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background: #f9f9f9;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.add-review {
+    margin-top: 20px;
+}
+
+.add-review textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.add-review button {
+    padding: 10px 20px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.add-review button:hover {
+    background: #0056b3;
+}
+
+.slick-prev:before,
+.slick-next:before {
+    color: black;
+}

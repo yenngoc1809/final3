@@ -1,19 +1,19 @@
-.stats{
+.stats {
     width: 100%;
     height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgb(247,235,215);
+    background-color: rgb(247, 235, 215);
     flex-wrap: wrap;
     padding: 20px;
 }
 
-.stats-icon{
+.stats-icon {
     align-items: center;
 }
 
-.stats-block{
+.stats-block {
     height: 170px;
     width: 150px;
     border-radius: 10px;
@@ -24,5 +24,33 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: #fff;
+    /* // background-color: #fff;
+    color: #fff; */
+    /* Thay đổi màu chữ để nó hiển thị rõ ràng trên nền hình ảnh */
+    background-size: cover;
+    background-position: center;
+}
+
+.stats-block-1 {
+    background-image: url('./img/paper1.jpg');
+    /* Thay thế bằng đường dẫn tới hình ảnh của bạn */
+}
+
+.stats-block-2 {
+    background-image: url('./img/paper1.jpg');
+    /* Thay thế bằng đường dẫn tới hình ảnh của bạn */
+}
+
+.stats-block-3 {
+    background-image: url('./img/paper1.jpg');
+    /* Thay thế bằng đường dẫn tới hình ảnh của bạn */
+}
+
+.stats-title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.stats-count {
+    font-size: 24px;
 }

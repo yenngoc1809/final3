@@ -1,4 +1,4 @@
-/*Desktop View*/
+/* Desktop View */
 .header {
     display: flex;
     justify-content: space-between;
@@ -8,14 +8,14 @@
     width: 100%;
     position: fixed;
     z-index: 100;
-    background-color: rgb(16, 25, 13);
-    box-shadow: 0 1px 4px rgba(146, 161, 176, .15);
-    top: 0%;
+    background-color: #5E412F;
+    box-shadow: 0 1px 4px #F07818;
+    top: 0;
 }
 
 .logo-nav a {
     font-size: 20px;
-    color: rgb(233, 83, 75);
+    color: #f07818;
     font-weight: 800;
 }
 
@@ -27,7 +27,7 @@
 .search-input {
     width: 100%;
     margin-left: 15px;
-    max-width: 1800px;
+    max-width: 600px;
     height: 40px;
     outline: none;
     padding: 10px 15px;
@@ -36,36 +36,36 @@
     border: 1px solid white;
 }
 
-.nav-options {
-    padding-left: 25px;
-    display: flex;
-    list-style-type: none;
-    margin-bottom: 15px !important;
-}
-
-.nav-options-active {
-    padding-left: 25px;
-    display: flex;
-    list-style-type: none;
-    margin-bottom: 15px !important;
-}
-
 .nav-right {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
+}
+
+.nav-options {
+    display: flex;
+    list-style-type: none;
+    margin-bottom: 0;
+    align-items: center;
+}
+
+.nav-options-active {
+    display: flex;
+    list-style-type: none;
+    margin-bottom: 0;
+    align-items: center;
 }
 
 .option {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0px 40px;
-    margin-top: 15px;
+    padding: 0px 20px;
     color: rgb(243, 6, 6);
 }
 
-.option a {
+.option a,
+.option span {
     color: rgb(233, 83, 75);
     display: flex;
     align-items: center;
@@ -73,7 +73,8 @@
     font-size: 18px;
 }
 
-.option a:hover {
+.option a:hover,
+.option span:hover {
     color: wheat;
     transition: all ease 0.5s;
 }
@@ -82,16 +83,11 @@ a {
     text-decoration: none !important;
 }
 
-.option:hover {
-    color: rgb(6, 240, 170);
-}
-
 .mobile-menu {
     display: block;
 }
 
 /* Nav Options are given in this to make the search input as big as possible */
-
 @media (min-width: 768px) {
     .mobile-menu {
         display: none !important;
@@ -99,39 +95,45 @@ a {
 
     .header {
         display: grid;
-        grid-template-columns: 10% 60%;
+        grid-template-columns: 1fr auto;
+    }
+
+    .nav-right {
+        flex: 0;
+        display: flex;
+        align-items: center;
+    }
+
+    .search-input {
+        margin: 0 15px;
     }
 }
 
 @media (max-width: 768px) {
 
-    /*Mobile View */
+    /* Mobile View */
     .header {
         padding: 0px 10px;
     }
 
     .nav-options {
         display: flex;
+        flex-direction: column;
+        /* Thay đổi chiều hướng thành cột */
         width: 100%;
-        height: 280px;
         position: absolute;
         top: 60px;
         left: -100%;
         opacity: 0;
         transition: all 0.5s ease;
-        flex-direction: column;
-        list-style-type: none;
-        grid-gap: 0px;
+        background-color: #5E412F;
+        /* Đảm bảo nền giống header */
+        z-index: 100;
     }
 
-    .nav-options.active {
-        background: black;
+    .nav-options.nav-options-active {
         left: 0;
         opacity: 1;
-        transition: all 0.5s ease;
-        z-index: 100;
-        align-content: center;
-        padding-left: 0px;
     }
 
     .menu-icon {
@@ -149,7 +151,15 @@ a {
         display: flex;
         align-items: center;
         justify-content: center;
-        height: 10vw;
-        padding: 30px 0px;
+        height: 50px;
+        /* Chiều cao mỗi mục menu */
+        padding: 10px 0;
+        border-bottom: 1px solid #F07818;
+        /* Thêm đường viền giữa các mục */
+    }
+
+    .option:last-child {
+        border-bottom: none;
+        /* Loại bỏ đường viền cho mục cuối */
     }
 }

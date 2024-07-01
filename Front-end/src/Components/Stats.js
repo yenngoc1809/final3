@@ -64,15 +64,15 @@ function Stats() {
 
     return (
         <div className='stats'>
-            <div className='stats-block'>
+            <div className='stats-block stats-block-1'>
                 <p className='stats-title'>Total Books</p>
                 <p className='stats-count'>{stats.totalBooks}</p>
             </div>
-            <div className='stats-block'>
+            <div className='stats-block stats-block-2'>
                 <p className='stats-title'>Total Users</p>
                 <p className='stats-count'>{stats.totalUsers}</p>
             </div>
-            <div className='stats-block'>
+            <div className='stats-block stats-block-3'>
                 <p className='stats-title'>Total Transactions</p>
                 <p className='stats-count'>{stats.totalReservations}</p>
             </div>

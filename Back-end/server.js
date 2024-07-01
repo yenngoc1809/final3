@@ -196,7 +196,7 @@ app.use(function (err, req, res, next) {
 
 // Start the server
 const server = app.listen(port, () => {
-  console.log(Server is running on port ${port});
+  console.log(`Server is running on port ${port}`);
 });
 
 // Set timeout to 2 minutes

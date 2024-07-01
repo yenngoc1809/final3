@@ -65,16 +65,16 @@ function BookTable({ books }) {
         <div key={book._id} className={`book-item ${book.bookCountAvailable > 0 ? 'available' : 'unavailable'}`}>
           <Link to={`/book/${book._id}`}>
             <img
-              src={book.coverImage}
-              alt={book.bookName}
+              src={book.coverImage || FALLBACK_IMAGE} // Sử dụng ảnh dự phòng nếu không có ảnh bìa
+              alt={book.bookName || 'No title'} // Hiển thị thông báo nếu không có tên sách
               onError={handleImageError}
               className="book-cover"
             />
           </Link>
           <div className="book-info">
-            <h5>{book.bookName}</h5>
-            <p>{book.author}</p>
-            <p>{book.language}</p>
+            <h5>{book.bookName || 'No title'}</h5> {/* Hiển thị thông báo nếu không có tên sách */}
+            <p>{book.author || 'Unknown author'}</p> {/* Hiển thị thông báo nếu không có tác giả */}
+            <p>{book.language || 'Unknown language'}</p> {/* Hiển thị thông báo nếu không có ngôn ngữ */}
             <p>{book.bookCountAvailable > 0 ? `Available (${book.bookCountAvailable} copies)` : 'Out of stock'}</p>
             <IconButton onClick={() => handleRequest(book._id)}>
               <LibraryBooksIcon /> {requests[book._id] ? 'Cancel Request' : 'Request'}

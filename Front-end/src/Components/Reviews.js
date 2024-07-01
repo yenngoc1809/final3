@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { AuthContext } from '../Context/AuthContext';
-//import './BookDetail.css';
 
 const API_URL = process.env.REACT_APP_API_URL || "http://localhost:3000/";
 
@@ -24,6 +23,12 @@ function Reviews({ bookId }) {
     }, [bookId]);
 
     const handleAddReview = async () => {
+        if (!user || !user._id) {
+            console.error('User not authenticated');
+            alert('You must be logged in to add a review');
+            return;
+        }
+
         if (comment.trim()) {
             try {
                 const newReview = { bookId, userId: user._id, comment };
@@ -41,19 +46,27 @@ function Reviews({ bookId }) {
             <div className="reviews-list">
                 {reviews.map((review, index) => (
                     <div key={index} className="review-item">
-                        <p><strong>{review.userId.username}:</strong> {review.comment}</p>
+                        <p>
+                            <strong>
+                                {review.userId && review.userId.username ? review.userId.username : 'Anonymous'}
+                                :</strong> {review.comment}
+                        </p>
                         <span>{new Date(review.createdAt).toLocaleString()}</span>
                     </div>
                 ))}
             </div>
-            <div className="add-review">
-                <textarea
-                    value={comment}
-                    onChange={(e) => setComment(e.target.value)}
-                    placeholder="Write your review here..."
-                />
-                <button onClick={handleAddReview}>Submit</button>
-            </div>
+            {user && user._id ? (
+                <div className="add-review">
+                    <textarea
+                        value={comment}
+                        onChange={(e) => setComment(e.target.value)}
+                        placeholder="Write your review here..."
+                    />
+                    <button onClick={handleAddReview}>Submit</button>
+                </div>
+            ) : (
+                <p>Please log in to add a review.</p>
+            )}
         </div>
     );
 }

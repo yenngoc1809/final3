@@ -1,21 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../Context/AuthContext'; // Đảm bảo rằng đường dẫn đúng
 import './Header.css';
 import MenuIcon from '@material-ui/icons/Menu';
 import ClearIcon from '@material-ui/icons/Clear';
 
 function Header() {
     const [menutoggle, setMenutoggle] = useState(false);
-    const [isAdmin, setIsAdmin] = useState(true); // Phải được đặt dựa trên trạng thái người dùng
-    const [isLoggedIn, setIsLoggedIn] = useState(false); // Trạng thái đăng nhập
-    const [searchQuery, setSearchQuery] = useState(''); // Trạng thái cho đầu vào tìm kiếm
+    const [searchQuery, setSearchQuery] = useState('');
+    const { user } = useContext(AuthContext);
     const navigate = useNavigate();
-
-    useEffect(() => {
-        // Kiểm tra trạng thái đăng nhập từ localStorage hoặc bất kỳ phương thức nào bạn đang sử dụng
-        const loggedIn = localStorage.getItem('isLoggedIn');
-        setIsLoggedIn(loggedIn === 'true');
-    }, []);
 
     const Toggle = () => {
         setMenutoggle(!menutoggle);
@@ -27,8 +21,8 @@ function Header() {
 
     const handleMenuClick = () => {
         closeMenu();
-        if (isLoggedIn) {
-            navigate(isAdmin ? '/dashboard@admin' : '/dashboard@member'); // Chuyển hướng đến trang dashboard
+        if (user) {
+            navigate(user.isAdmin ? '/dashboard@admin' : '/dashboard@member'); // Chuyển hướng đến trang dashboard
         } else {
             navigate('/signin'); // Chuyển hướng đến trang signin
         }
@@ -52,7 +46,7 @@ function Header() {
                 </Link>
             </div>
             <div className='nav-right'>
-                {!isLoggedIn && (
+                {!user && (
                     <>
                         <input
                             className='search-input'
@@ -64,7 +58,7 @@ function Header() {
                         />
                     </>
                 )}
-                <ul className={menutoggle ? "nav-options-active" : "nav-options"}>
+                <ul className={menutoggle ? "nav-options nav-options-active" : "nav-options"}>
                     <li className="option" onClick={closeMenu}>
                         <Link to='/'>Home</Link>
                     </li>
@@ -72,7 +66,7 @@ function Header() {
                         <Link to='/allbooks'>Books</Link>
                     </li>
                     <li className="option" onClick={handleMenuClick}>
-                        <span>{isLoggedIn ? 'Menu' : 'Sign In'}</span>
+                        <span>{user ? 'Dashboard' : 'Sign In'}</span>
                     </li>
                 </ul>
             </div>

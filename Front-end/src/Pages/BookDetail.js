@@ -42,14 +42,7 @@ function Reviews({ bookId }) {
 
     return (
         <div className="reviews-section">
-            <div className="reviews-list">
-                {reviews.map((review, index) => (
-                    <div key={index} className="review-item">
-                        <p><strong>{review.userId.username}:</strong> {review.comment}</p>
-                        <span>{new Date(review.createdAt).toLocaleString()}</span>
-                    </div>
-                ))}
-            </div>
+            <h2>Comments</h2>
             <div className="add-review">
                 <textarea
                     value={comment}
@@ -57,6 +50,14 @@ function Reviews({ bookId }) {
                     placeholder="Write your review here..."
                 />
                 <button onClick={handleAddReview}>Submit</button>
+            </div>
+            <div className="reviews-list">
+                {reviews.map((review, index) => (
+                    <div key={index} className="review-item">
+                        <p><strong>{review.userId.username}:</strong> {review.comment}</p>
+                        <span>{new Date(review.createdAt).toLocaleString()}</span>
+                    </div>
+                ))}
             </div>
         </div>
     );
@@ -135,37 +136,33 @@ function BookDetail() {
 
     return (
         <div className="book-detail-container">
-            {book ? (
-                <>
-                    <div className="book-detail-image">
-                        <img
-                            src={book.coverImage}
-                            alt={book.bookName}
-                            onError={(e) => e.target.src = FALLBACK_IMAGE}
-                        />
-                    </div>
-                    <div className="book-detail-info">
-                        <h1>{book.bookName}</h1>
-                        <p><strong>Author:</strong> {book.author}</p>
-                        <p><strong>Language:</strong> {book.language}</p>
-                        <p className={book.bookCountAvailable > 0 ? 'available' : 'out-of-stock'}>
-                            {book.bookCountAvailable > 0 ? `Available (${book.bookCountAvailable} copies)` : 'Out of stock'}
-                        </p>
-                        <p><strong>Genre:</strong> {book.genre}</p>
-                        <p><strong>Publication Date:</strong> {book.publicationDate}</p>
-                        <p><strong>Description:</strong> {book.description}</p>
-                        <IconButton onClick={handleRequest}>
-                            <LibraryBooksIcon /> {requested ? 'Cancel Request' : 'Request'}
-                        </IconButton>
-                        {error && <div className="error-message">Error: {error}</div>}
-                    </div>
-                    <div className="book-reviews-section">
-                        <Reviews bookId={id} />
-                    </div>
-                </>
-            ) : (
-                <div>No book details available</div>
-            )}
+            <div className="book-detail-top">
+                <div className="book-detail-image">
+                    <img
+                        src={book.coverImage}
+                        alt={book.bookName}
+                        onError={(e) => e.target.src = FALLBACK_IMAGE}
+                    />
+                </div>
+                <div className="book-detail-info">
+                    <h1>{book.bookName}</h1>
+                    <p><strong>Author:</strong> {book.author}</p>
+                    <p><strong>Language:</strong> {book.language}</p>
+                    <p className={book.bookCountAvailable > 0 ? 'available' : 'out-of-stock'}>
+                        {book.bookCountAvailable > 0 ? `Available (${book.bookCountAvailable} copies)` : 'Out of stock'}
+                    </p>
+                    <p><strong>Genre:</strong> {book.genre}</p>
+                    <p><strong>Publication Date:</strong> {book.publicationDate}</p>
+                    <p><strong>Description:</strong> {book.description}</p>
+                    <IconButton onClick={handleRequest}>
+                        <LibraryBooksIcon /> {requested ? 'Cancel Request' : 'Request'}
+                    </IconButton>
+                    {error && <div className="error-message">Error: {error}</div>}
+                </div>
+            </div>
+            <div className="reviews-section">
+                <Reviews bookId={id} />
+            </div>
         </div>
     );
 }

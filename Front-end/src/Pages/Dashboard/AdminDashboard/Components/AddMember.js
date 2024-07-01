@@ -146,7 +146,7 @@ function AddMember() {
                 <label className="addmember-form-label" htmlFor="password">Password<span className="required-field">*</span></label><br />
                 <input className="addmember-form-input" type="password" value={password} onChange={(e) => setPassword(e.target.value)}></input><br />
 
-                <input className="addmember-submit" type="submit" value="SUBMIT" disabled={isLoading}></input>
+                <input className="addbook-submit" type="submit" value="SUBMIT" disabled={isLoading}></input>
             </form>
             <p className="dashboard-option-title">Recently Added Members</p>
             <div className="dashboard-title-line"></div>

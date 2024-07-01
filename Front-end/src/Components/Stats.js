@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './Stats.css';
+import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
+import LocalLibraryIcon from '@material-ui/icons/LocalLibrary';
+import BookIcon from '@material-ui/icons/Book';
 
 const API_URL = process.env.REACT_APP_API_URL || "http://localhost:3000/";
 
@@ -64,16 +67,19 @@ function Stats() {
 
     return (
         <div className='stats'>
-            <div className='stats-block stats-block-1'>
+            <div className='stats-block'>
+                <LibraryBooksIcon className='stats-icon' style={{ fontSize: 80 }} />
                 <p className='stats-title'>Total Books</p>
                 <p className='stats-count'>{stats.totalBooks}</p>
             </div>
-            <div className='stats-block stats-block-2'>
-                <p className='stats-title'>Total Users</p>
+            <div className='stats-block'>
+                <LocalLibraryIcon className='stats-icon' style={{ fontSize: 80 }} />
+                <p className='stats-title'>Total Members</p>
                 <p className='stats-count'>{stats.totalUsers}</p>
             </div>
-            <div className='stats-block stats-block-3'>
-                <p className='stats-title'>Total Transactions</p>
+            <div className='stats-block'>
+                <BookIcon className='stats-icon' style={{ fontSize: 80 }} />
+                <p className='stats-title'>Reservations</p>
                 <p className='stats-count'>{stats.totalReservations}</p>
             </div>
         </div>

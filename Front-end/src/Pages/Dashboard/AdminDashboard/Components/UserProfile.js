@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { AuthContext } from "../../../../Context/AuthContext";
 import axios from "axios";
+import './UserProfile.css';
 
 function UserProfile() {
     const { user } = useContext(AuthContext);
@@ -169,7 +170,7 @@ function UserProfile() {
             <div>
                 <button onClick={() => setIsEditing(!isEditing)}>Edit Profile</button>
                 {isEditing && (
-                    <form onSubmit={handleUpdate}>
+                    <form onSubmit={handleUpdate} className="edit-profile-form">
                         <label>
                             Full Name:
                             <input
@@ -233,7 +234,7 @@ function UserProfile() {
                                 onChange={handleChange}
                             />
                         </label>
-                        <button type="submit" disabled={loading}>
+                        <button className="addbook-submit" type="submit" disabled={loading}>
                             {loading ? 'Saving...' : 'Save'}
                         </button>
                         {error && <p className="error-message">{error}</p>}

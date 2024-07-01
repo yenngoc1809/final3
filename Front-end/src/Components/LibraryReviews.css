@@ -1,15 +1,24 @@
 /* LibraryReviews.css */
+
 .reviews-section {
     width: 80%;
+    max-width: 1200px;
+    /* Set a maximum width */
     margin: 20px auto;
-    /* Thêm margin-top để cách lề trên */
+    /* Center horizontally with auto margins */
+    background-color: white;
+    /* Ensure background color for visibility */
+    padding: 20px;
+    /* Add some padding for spacing */
+    border-radius: 5px;
+    /* Optional: for rounded corners */
 }
 
 .review-item {
-    padding: 20px;
+    padding: 40px;
     border: 1px solid #ddd;
     border-radius: 5px;
-    background: #f9f9f9;
+    background-color: rgb(247, 235, 215);
     margin-bottom: 10px;
     text-align: left;
 }
@@ -42,4 +51,56 @@
 .slick-prev:before,
 .slick-next:before {
     color: black;
+}
+
+/* Mobile View */
+@media (max-width: 768px) {
+    .reviews-section {
+        width: 90%;
+        margin: 10px auto;
+        /* Center horizontally with auto margins */
+    }
+
+    .review-item {
+        padding: 15px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        background: #f9f9f9;
+        margin-bottom: 8px;
+    }
+
+    .add-review textarea {
+        padding: 8px;
+    }
+
+    .add-review button {
+        padding: 8px 16px;
+    }
+}
+
+/* Desktop View */
+@media (min-width: 768px) {
+    .reviews-section {
+        width: 80%;
+        max-width: 500px;
+        /* Set a maximum width */
+        margin: 20px auto;
+        /* Center horizontally with auto margins */
+    }
+
+    .review-item {
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        background: #f9f9f9;
+        margin-bottom: 10px;
+    }
+
+    .add-review textarea {
+        padding: 10px;
+    }
+
+    .add-review button {
+        padding: 10px 20px;
+    }
 }

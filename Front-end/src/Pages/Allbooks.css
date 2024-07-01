@@ -1,8 +1,9 @@
 /* Main container for the page */
 .page-container {
     margin-top: 80px;
-    /* Điều chỉnh giá trị này để tạo khoảng cách hợp lý giữa header và nội dung */
     padding: 20px;
+    background-color: rgb(247, 235, 215);
+    /* Nền cho trang chính */
 }
 
 /* Main container for the book grid */
@@ -12,20 +13,18 @@
     gap: 16px;
     justify-content: space-around;
     margin-top: 20px;
-    /* Đặt khoảng cách hợp lý giữa header và nội dung */
 }
 
 /* Each book item container */
 .book-item {
     flex: 1 0 calc(16% - 16px);
-    /* Sáu mục trên mỗi hàng */
     max-width: calc(16% - 16px);
-    /* Sáu mục trên mỗi hàng */
     box-sizing: border-box;
     border: 1px solid #ddd;
     padding: 16px;
     border-radius: 8px;
     background-color: #fff;
+    /* Nền cho từng mục sách */
     transition: transform 0.2s;
     margin: 8px;
 }
@@ -38,13 +37,11 @@
 /* Available book styling */
 .book-item.available {
     border-color: #28a745;
-    /* Green border for available books */
 }
 
 /* Unavailable book styling */
 .book-item.unavailable {
     border-color: #dc3545;
-    /* Red border for unavailable books */
 }
 
 /* Book cover image styling */
@@ -52,9 +49,7 @@
     width: 100%;
     height: auto;
     max-height: 250px;
-    /* Adjust the height to make the images rectangular */
     aspect-ratio: 2/3;
-    /* Aspect ratio for a typical book cover */
     display: block;
     margin: 0 auto 16px;
     object-fit: cover;
@@ -81,7 +76,6 @@
 @media (max-width: 1200px) {
     .book-item {
         flex: 1 0 calc(20% - 16px);
-        /* Năm mục trên mỗi hàng */
         max-width: calc(20% - 16px);
     }
 }
@@ -89,7 +83,6 @@
 @media (max-width: 992px) {
     .book-item {
         flex: 1 0 calc(25% - 16px);
-        /* Bốn mục trên mỗi hàng */
         max-width: calc(25% - 16px);
     }
 }
@@ -97,7 +90,6 @@
 @media (max-width: 768px) {
     .book-item {
         flex: 1 0 calc(33.33% - 16px);
-        /* Ba mục trên mỗi hàng */
         max-width: calc(33.33% - 16px);
     }
 }
@@ -105,7 +97,6 @@
 @media (max-width: 576px) {
     .book-item {
         flex: 1 0 calc(50% - 16px);
-        /* Hai mục trên mỗi hàng */
         max-width: calc(50% - 16px);
     }
 }
@@ -113,7 +104,52 @@
 @media (max-width: 480px) {
     .book-item {
         flex: 1 0 100%;
-        /* Một mục trên mỗi hàng */
         max-width: 100%;
+    }
+}
+
+/* Additional styles for better mobile experience */
+@media (max-width: 768px) {
+    .page-container {
+        padding: 10px;
+    }
+
+    .book-info h5 {
+        font-size: 1em;
+    }
+
+    .book-info p {
+        font-size: 0.9em;
+    }
+
+    .book-cover {
+        max-height: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-container {
+        padding: 5px;
+    }
+
+    .book-info h5 {
+        font-size: 0.9em;
+    }
+
+    .book-info p {
+        font-size: 0.8em;
+    }
+
+    .book-cover {
+        max-height: 150px;
+    }
+
+    .book-grid {
+        gap: 8px;
+    }
+
+    .book-item {
+        padding: 8px;
+        margin: 4px;
     }
 }

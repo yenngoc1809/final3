@@ -1,0 +1,78 @@
+/* RequestList.css */
+
+.request-list {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.request-list h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.request-list ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.request-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 10px 20px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.request-item span {
+    flex-grow: 1;
+    color: #333;
+}
+
+.request-item button {
+    margin-left: 10px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.request-item button:first-of-type {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.request-item button:first-of-type:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.request-item button:last-of-type {
+    background-color: #f44336;
+    color: white;
+}
+
+.request-item span:not-available {
+    margin-left: 10px;
+    color: #f44336;
+    font-weight: bold;
+}
+
+.error-message {
+    color: red;
+    text-align: center;
+    margin: 10px 0;
+}
+
+.loading {
+    text-align: center;
+    color: #333;
+}

@@ -61,12 +61,7 @@ function AddCategory() {
                     required
                     onChange={(e) => setCategoryName(e.target.value)}
                 /><br />
-                <input
-                    className="addcategory-submit"
-                    type="submit"
-                    value="SUBMIT"
-                    disabled={isLoading}
-                /><br />
+                <input className="addbook-submit" type="submit" value="SUBMIT" disabled={isLoading} /><br />
                 {error && <p className="error-message">{error}</p>}
             </form>
             <p className="dashboard-option-title">Recently Added Categories</p>

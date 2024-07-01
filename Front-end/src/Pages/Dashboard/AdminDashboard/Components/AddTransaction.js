@@ -293,7 +293,8 @@ function AddTransaction() {
                     dateFormat="MM/dd/yyyy"
                     onChange={(date) => setToDate(date)}
                 />
-                <button className="submit-button" type="submit" disabled={isLoading}>{editingTransaction ? "Update" : "Submit"}</button>
+
+                <button className="addbook-submit" type="" disabled={isLoading}>{editingTransaction ? "Update" : "Submit"}</button>
             </form>
             <div>
                 <p className="dashboard-option-title">Recent Transactions</p>

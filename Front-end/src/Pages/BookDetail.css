@@ -1,8 +1,7 @@
-/* BookDetail.css */
 .book-detail-container {
     display: flex;
-    justify-content: center;
-    align-items: flex-start;
+    flex-direction: column;
+    align-items: center;
     padding: 20px;
     background-color: #f9f9f9;
     border-radius: 8px;
@@ -12,16 +11,32 @@
     font-family: Arial, sans-serif;
 }
 
+.book-detail-top {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
 .book-detail-image {
     max-width: 300px;
+    width: 300px;
+    /* Đặt chiều rộng cố định */
+    height: 450px;
+    /* Đặt chiều cao cố định */
     flex-shrink: 0;
-    margin-right: 20px;
+    margin-right: 40px;
+    /* Thêm khoảng cách giữa bìa sách và thông tin sách */
 }
 
 .book-detail-image img {
     max-width: 100%;
-    height: auto;
+    max-height: 100%;
+    height: 100%;
+    /* Đặt chiều cao cố định */
     border-radius: 8px;
+    object-fit: cover;
+    /* Đảm bảo ảnh không bị biến dạng */
 }
 
 .book-detail-info {
@@ -31,6 +46,8 @@
 .book-detail-info h1 {
     font-size: 2em;
     color: #333;
+    font-weight: bold;
+    margin: 10px 0;
 }
 
 .book-detail-info p {
@@ -47,4 +64,144 @@
 .book-detail-info .out-of-stock {
     color: red;
     font-weight: bold;
+}
+
+.book-detail-info .icon-button {
+    margin-top: 10px;
+}
+
+.reviews-section {
+    width: 100%;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #ddd;
+}
+
+.reviews-section h2 {
+    margin-bottom: 10px;
+    font-size: 1.5em;
+    color: #333;
+}
+
+.add-review {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.add-review textarea {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    resize: none;
+    margin-bottom: 10px;
+}
+
+.add-review button {
+    padding: 10px 20px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.add-review button:hover {
+    background: #0056b3;
+}
+
+.reviews-list {
+    max-height: 300px;
+    overflow-y: auto;
+    padding-top: 10px;
+}
+
+.review-item {
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.review-item p {
+    margin: 0;
+}
+
+.review-item span {
+    display: block;
+    font-size: 0.9em;
+    color: #999;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    .book-detail-container {
+        padding: 10px;
+        margin: 50px auto;
+    }
+
+    .book-detail-top {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .book-detail-image {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+
+    .book-detail-info h1 {
+        font-size: 1.5em;
+    }
+
+    .book-detail-info p {
+        font-size: 0.9em;
+    }
+
+    .add-review textarea {
+        height: 80px;
+    }
+
+    .add-review button {
+        padding: 8px 16px;
+    }
+
+    .reviews-list {
+        max-height: 200px;
+    }
+
+    .review-item span {
+        font-size: 0.8em;
+    }
+}
+
+@media (max-width: 480px) {
+    .book-detail-container {
+        padding: 5px;
+        margin: 20px auto;
+    }
+
+    .book-detail-info h1 {
+        font-size: 1.2em;
+    }
+
+    .book-detail-info p {
+        font-size: 0.8em;
+    }
+
+    .add-review textarea {
+        height: 60px;
+    }
+
+    .add-review button {
+        padding: 6px 12px;
+    }
+
+    .reviews-list {
+        max-height: 150px;
+    }
+
+    .review-item span {
+        font-size: 0.7em;
+    }
 }

@@ -22,11 +22,12 @@ function Signin() {
     const [error, setError] = useState("");
     const { dispatch } = useContext(AuthContext);
 
-    const API_URL = process.env.REACT_APP_API_URL || "http://localhost:3000/api/authentication";
+    const API_URL = process.env.REACT_APP_API_URL || "http://localhost:3000/";
 
     const signupCall = async (userCredential) => {
         try {
-            const res = await axios.post(`${API_URL}/register`, userCredential);
+            const res = await axios.post(`${API_URL}api/authentication/register`, userCredential);
+            console.log("cre", userCredential);
             alert('Registration successful! Please log in.');
             setIsLogin(true);
         } catch (err) {
@@ -43,7 +44,7 @@ function Signin() {
 
     const signinCall = async (userCredential) => {
         try {
-            const res = await axios.post(`${API_URL}/signin`, userCredential);
+            const res = await axios.post(`${API_URL}api/authentication/signin`, userCredential);
             dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
             alert('Login successful!');
         } catch (err) {
@@ -243,9 +244,7 @@ function Signin() {
                     <button className="signin-button" type="submit">{isLogin ? "Log In" : "Sign Up"}</button>
                     {isLogin ? (
                         <a className="forget-pass" href="#home">Forgot password?</a>
-                    ) : (
-                        <a className="forget-pass" href="#home" onClick={() => setIsLogin(true)}>Already have an account? Log In</a>
-                    )}
+                    ) : null}
                 </form>
                 <div className='signup-option'>
                     {isLogin ? (

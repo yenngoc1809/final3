@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'; // Import Link
 import './RecentAddedBooks.css';
 
-const API_URL = process.env.REACT_APP_API_URL || "http://localhost:3000";
+const API_URL = process.env.REACT_APP_API_URL || "http://localhost:3000/";
 
 function RecentAddedBooks() {
     const [recentBooks, setRecentBooks] = useState([]);
@@ -10,7 +10,7 @@ function RecentAddedBooks() {
     useEffect(() => {
         const fetchRecentBooks = async () => {
             try {
-                const response = await fetch(`${API_URL}/api/books/recentbooks`);
+                const response = await fetch(`${API_URL}api/books/recentbooks`);
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }

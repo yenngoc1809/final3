@@ -136,7 +136,7 @@ dotenv.config();
 
 // Create Express app
 var app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 4000;
 
 // Middleware setup
 app.use(express.json());
@@ -147,7 +147,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(logger('dev'));
 
 // MongoDB connection
-const mongoURI = process.env.MONGO_URL || 'mongodb+srv://min:min123456@cluster0.s4hmutd.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
+const mongoURI = process.env.MONGO_URL;
 
 mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('Connected to MongoDB'))

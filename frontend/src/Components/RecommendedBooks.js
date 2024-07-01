@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'; // Import Link
 import './RecommendedBooks.css';
 
-const API_URL = process.env.REACT_APP_API_URL || "http://localhost:3000";
+const API_URL = process.env.REACT_APP_API_URL || "http://localhost:3000/";
 
 function RecommendedBooks() {
   const [recommendedBooks, setRecommendedBooks] = useState([]);
@@ -10,7 +10,7 @@ function RecommendedBooks() {
   useEffect(() => {
     const fetchRecommendedBooks = async () => {
       try {
-        const response = await fetch(`${API_URL}/api/books/randombooks`);
+        const response = await fetch(`${API_URL}api/books/randombooks`);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }

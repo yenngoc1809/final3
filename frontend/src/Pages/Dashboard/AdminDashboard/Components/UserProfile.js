@@ -10,13 +10,13 @@ function UserProfile() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
-    const API_URL = process.env.REACT_APP_API_URL || "http://localhost:3000/api/users";
+    const API_URL = process.env.REACT_APP_API_URL || "http://localhost:3000/";
 
     useEffect(() => {
         const fetchUserDetails = async () => {
             try {
                 console.log("Fetching user details for user ID:", user._id);
-                const response = await axios.get(`${API_URL}/getuser/${user._id}`);
+                const response = await axios.get(`${API_URL}api/users/getuser/${user._id}`);
                 console.log("User details fetched:", response.data);
                 setFormData(response.data);
             } catch (err) {
@@ -41,7 +41,7 @@ function UserProfile() {
         setError(null);
         try {
             console.log("Updating profile with data:", formData);
-            const response = await axios.put(`${API_URL}/updateuser/${user._id}`, {
+            const response = await axios.put(`${API_URL}api/users/updateuser/${user._id}`, {
                 ...formData,
                 userId: user._id,
                 isAdmin: user.isAdmin

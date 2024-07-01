@@ -4,7 +4,7 @@ import axios from 'axios';
 import BookTable from '../Components/BookTable';
 import '../Components/BookTable.css';
 
-const API_URL = process.env.REACT_APP_API_URL || "http://localhost:3000";
+const API_URL = process.env.REACT_APP_API_URL || "http://localhost:3000/";
 
 function useQuery() {
     return new URLSearchParams(useLocation().search);
@@ -17,7 +17,7 @@ function SearchResults() {
     useEffect(() => {
         const fetchSearchResults = async () => {
             try {
-                const response = await axios.get(`${API_URL}/api/books/search?query=${query}`);
+                const response = await axios.get(`${API_URL}api/books/search?query=${query}`);
                 console.log('Search Results:', response.data); // Log dữ liệu nhận được
                 setBooks(response.data);
             } catch (error) {

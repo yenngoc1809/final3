@@ -1,4 +1,4 @@
-# Use an official Node runtime as a parent image
+
 FROM node:20-alpine3.18
 
 # Set the working directory to /app

@@ -1,12 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
 
 .about-box {
-    background-color: #D2D3CB;
-    grid-template-columns: auto 1fr;
+    background-color: #ffffff;
 }
 
-/*
-Mobile View
+/* Mobile View */
 @media screen and (max-width: 768px) {
     .about-data {
         display: grid;
@@ -19,7 +17,7 @@ Mobile View
         font-family: 'Poppins', sans-serif;
         text-align: justify;
         padding: 15px;
-        color: rgb(220, 225, 219);
+        color: rgb(0, 0, 0);
     }
 }
 
@@ -30,28 +28,25 @@ Mobile View
     text-align: center;
     font-size: 32px;
     padding: 25px;
-    grid-column: 1;
 }
 
 .about-img img {
-    width: auto;
-    max-width: 70%;
-    height: auto;
+    width: 100%;
+    max-width: 700px;
     border-radius: 25px;
     padding: 15px;
-    margin-top: 50px;
-    margin-left: 50px;
-    grid-column: 2;
+    height: auto;
+    /* Maintain aspect ratio */
 }
 
-@media screen and (min-width:768px) {
+@media screen and (min-width: 768px) {
     .about-data p {
         margin-left: 50px;
         margin-right: 50px;
         font-size: 15px;
         font-family: 'Poppins', sans-serif;
         text-align: justify;
-        color: rgb(107, 11, 32);
+        color: rgb(0, 0, 0);
         padding: 15px;
     }
 
@@ -59,13 +54,4 @@ Mobile View
         display: grid;
         grid-template-columns: 50% 50%;
     }
-}
-
-
-.about-text {
-    color: orange;
-    font-size: 15px;
-    font-family: 'Poppins', sans-serif;
-    text-align: justify;
-
 }

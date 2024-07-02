@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Context/AuthContext'; // Đảm bảo rằng đường dẫn đúng
 import './Header.css';
@@ -46,18 +46,14 @@ function Header() {
                 </Link>
             </div>
             <div className='nav-right'>
-                {!user && (
-                    <>
-                        <input
-                            className='search-input'
-                            type='text'
-                            placeholder='Search a Book'
-                            value={searchQuery}
-                            onChange={handleSearchInputChange}
-                            onKeyPress={handleSearch}
-                        />
-                    </>
-                )}
+                <input
+                    className='search-input'
+                    type='text'
+                    placeholder='Search a Book'
+                    value={searchQuery}
+                    onChange={handleSearchInputChange}
+                    onKeyPress={handleSearch}
+                />
                 <ul className={menutoggle ? "nav-options nav-options-active" : "nav-options"}>
                     <li className="option" onClick={closeMenu}>
                         <Link to='/'>Home</Link>

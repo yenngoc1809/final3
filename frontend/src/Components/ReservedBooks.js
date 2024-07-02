@@ -10,6 +10,7 @@ function ReservedBooks() {
         fetch(`${API_URL}api/books/allbooks`)
             .then(response => response.json())
             .then(data => {
+                console.log('Fetched data:', data); // Log dữ liệu để kiểm tra
                 const outOfStockBooks = data.filter(book => book.bookCountAvailable === 0);
                 setBooks(outOfStockBooks);
             })
@@ -28,13 +29,19 @@ function ReservedBooks() {
                     </tr>
                 </thead>
                 <tbody>
-                    {books.map((book, index) => (
-                        <tr key={index}>
-                            <td>{book.bookName}</td>
-                            <td>{book.author}</td>
-                            <td>{new Date(book.createdAt).toLocaleDateString()}</td>
+                    {books.length > 0 ? (
+                        books.map((book, index) => (
+                            <tr key={index}>
+                                <td>{book.bookName}</td>
+                                <td>{book.author}</td>
+                                <td>{new Date(book.createdAt).toLocaleDateString()}</td>
+                            </tr>
+                        ))
+                    ) : (
+                        <tr>
+                            <td colSpan="3">No books out of stock.</td>
                         </tr>
-                    ))}
+                    )}
                 </tbody>
             </table>
         </div>

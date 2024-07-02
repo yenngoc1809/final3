@@ -12,8 +12,8 @@ import Stats from '../Components/Stats.js'
 function Home() {
     return (
         <div id='home'>
-            <About />
             <ImageSlider />
+            <About />
             <Stats />
             <RecentAddedBooks />
             <RecommendedBooks />

@@ -24,22 +24,6 @@ Recommended books section
 Statistics on books, users, and transactions
 Visual reports
 
-📂 Project Structure
-.
-├── backend/
-│   ├── models/        # Book, Users, Review, Request, Transaction
-│   ├── routes/        # authentication, books, categories, users, review, transactions
-│   └── server.js
-│
-├── frontend/
-│   ├── components/    # Header, Footer, BookTable, LibraryReviews, ...
-│   ├── pages/         # Home, Allbooks, BookDetail, Signin, Dashboard
-│   ├── context/       # AuthActions, AuthContext, AuthReducer
-│   └── App.js
-│
-├── compose.yaml       # Docker Compose configuration
-└── README.md
-
 ⚡ Installation & Running
 1. Clone the repository
 git clone https://github.com/yourusername/library-management-system.git

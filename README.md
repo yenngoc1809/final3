@@ -1,8 +1,8 @@
-## 📚 Library Management System
+# 📚 Library Management System
 Library Management System is a full-stack web application designed to manage books, users, borrowing/returning transactions, and reviews in a library.
 The project is built with React.js (frontend) and Node.js/Express (backend), with MongoDB/MySQL as the database.
 
-# 🚀 Features
+## 🚀 Features
 👤 User Management
 User registration, login, and authentication
 Role-based access: Admin / User
@@ -57,7 +57,7 @@ Database: MongoDB / MySQL (depending on configuration)
 Authentication: JWT
 Deployment: Docker Compose
 
-👤 Author
+## 👤 Author
 Nguyen Yen Ngoc
 Nguyen Nguyen Minh
 Hua Bao Ngoc
